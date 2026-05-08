@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>GlowUp</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div id="app">
+
+  <!-- HEADER -->
+  <div class="header">
+    <button id="backBtn" onclick="goBack()">‹</button>
+    <div class="header-logo">Glow<span>Up</span></div>
+  </div>
+
+  <!-- TAB BAR -->
+  <div class="tab-bar" id="tabBar">
+    <div class="tab active" data-tab="booking" onclick="switchTab('booking')">
+      <span class="tab-icon">✂</span>
+      <span class="tab-label">Запись</span>
+    </div>
+    <div class="tab" data-tab="myBookings" onclick="switchTab('myBookings')">
+      <span class="tab-icon">📋</span>
+      <span class="tab-label">Мои записи</span>
+    </div>
+    <div class="tab" data-tab="profile" onclick="switchTab('profile')">
+      <span class="tab-icon">👤</span>
+      <span class="tab-label">Профиль</span>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       SCREEN 1 — ЗАПИСЬ
+  ══════════════════════════════ -->
+  <div class="screen active" id="screen-booking">
+
+    <div class="salon-banner">
+      <div class="salon-avatar">💅</div>
+      <div>
+        <div class="salon-name">GlowUp Beauty</div>
+        <div class="salon-meta">📍 ул. Цветочная, 12</div>
+        <div class="salon-rating"><span class="stars">★★★★★</span> 4.9 · 248 отзывов</div>
+      </div>
+    </div>
+
+    <div class="section-label">Выберите услугу</div>
+    <div class="service-list">
+      <div class="service-card selected" data-service="Маникюр" data-price="1 200 ₽" data-dur="60 минут" onclick="selectService(this)">
+        <div class="service-icon">💅</div>
+        <div class="service-info">
+          <div class="service-name">Маникюр</div>
+          <div class="service-duration">60 минут</div>
+        </div>
+        <div class="service-price">1 200 ₽</div>
+      </div>
+      <div class="service-card" data-service="Педикюр" data-price="1 500 ₽" data-dur="90 минут" onclick="selectService(this)">
+        <div class="service-icon">🦶</div>
+        <div class="service-info">
+          <div class="service-name">Педикюр</div>
+          <div class="service-duration">90 минут</div>
+        </div>
+        <div class="service-price">1 500 ₽</div>
+      </div>
+      <div class="service-card" data-service="Брови и ресницы" data-price="900 ₽" data-dur="45 минут" onclick="selectService(this)">
+        <div class="service-icon">👁</div>
+        <div class="service-info">
+          <div class="service-name">Брови и ресницы</div>
+          <div class="service-duration">45 минут</div>
+        </div>
+        <div class="service-price">900 ₽</div>
+      </div>
+      <div class="service-card" data-service="Стрижка и укладка" data-price="2 000 ₽" data-dur="75 минут" onclick="selectService(this)">
+        <div class="service-icon">✂</div>
+        <div class="service-info">
+          <div class="service-name">Стрижка и укладка</div>
+          <div class="service-duration">75 минут</div>
+        </div>
+        <div class="service-price">2 000 ₽</div>
+      </div>
+    </div>
+
+    <div class="section-label">Выберите мастера</div>
+    <div class="masters-scroll">
+      <div class="master-card selected" data-master="Алина" onclick="selectMaster(this)">
+        <div class="master-avatar">👩</div>
+        <div class="master-name">Алина</div>
+        <div class="master-spec">Ногти</div>
+        <div class="master-rating">★ 4.9</div>
+      </div>
+      <div class="master-card" data-master="Карина" onclick="selectMaster(this)">
+        <div class="master-avatar">👩‍🦰</div>
+        <div class="master-name">Карина</div>
+        <div class="master-spec">Визаж</div>
+        <div class="master-rating">★ 4.8</div>
+      </div>
+      <div class="master-card" data-master="Соня" onclick="selectMaster(this)">
+        <div class="master-avatar">👱‍♀️</div>
+        <div class="master-name">Соня</div>
+        <div class="master-spec">Стрижки</div>
+        <div class="master-rating">★ 5.0</div>
+      </div>
+      <div class="master-card" data-master="Лена" onclick="selectMaster(this)">
+        <div class="master-avatar">👩‍🦱</div>
+        <div class="master-name">Лена</div>
+        <div class="master-spec">Брови</div>
+        <div class="master-rating">★ 4.7</div>
+      </div>
+    </div>
+
+    <div class="section-label">Выберите дату</div>
+    <div class="date-scroll" id="dateScroll"></div>
+
+    <div class="section-label">Выберите время</div>
+    <div class="time-grid">
+      <div class="time-slot" onclick="selectTime(this)">10:00</div>
+      <div class="time-slot" onclick="selectTime(this)">11:00</div>
+      <div class="time-slot" onclick="selectTime(this)">12:00</div>
+      <div class="time-slot" onclick="selectTime(this)">13:00</div>
+      <div class="time-slot" onclick="selectTime(this)">14:00</div>
+      <div class="time-slot" onclick="selectTime(this)">15:00</div>
+      <div class="time-slot" onclick="selectTime(this)">16:00</div>
+      <div class="time-slot" onclick="selectTime(this)">17:00</div>
+      <div class="time-slot" onclick="selectTime(this)">18:00</div>
+    </div>
+
+  </div>
+
+  <!-- ══════════════════════════════
+       SCREEN 2 — МОИ ЗАПИСИ
+  ══════════════════════════════ -->
+  <div class="screen" id="screen-myBookings">
+
+    <div class="section-label">Предстоящие</div>
+
+    <div class="booking-card">
+      <span class="badge badge-success">Подтверждено</span>
+      <div class="booking-service">Маникюр</div>
+      <div class="booking-meta">👩 Алина · 📅 8 мая, 12:00 · ⏱ 60 мин</div>
+      <div class="booking-actions">
+        <button class="btn-outline">Перенести</button>
+        <button class="btn-outline danger">Отменить</button>
+      </div>
+    </div>
+
+    <div class="section-label">История</div>
+
+    <div class="booking-card">
+      <span class="badge badge-done">Выполнено</span>
+      <div class="booking-service">Педикюр</div>
+      <div class="booking-meta">👩‍🦰 Карина · 📅 25 апреля, 14:00</div>
+    </div>
+
+    <div class="booking-card">
+      <span class="badge badge-done">Выполнено</span>
+      <div class="booking-service">Брови и ресницы</div>
+      <div class="booking-meta">👩‍🦱 Лена · 📅 10 апреля, 11:00</div>
+    </div>
+
+  </div>
+
+  <!-- ══════════════════════════════
+       SCREEN 3 — ПРОФИЛЬ
+  ══════════════════════════════ -->
+  <div class="screen" id="screen-profile">
+
+    <div class="profile-top">
+      <div class="profile-avatar-big">👩</div>
+      <div class="profile-name">Мария Иванова</div>
+      <div class="profile-phone">+7 (999) 123-45-67</div>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-num">12</div>
+        <div class="stat-label">Визитов</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Любимых услуг</div>
+      </div>
+    </div>
+
+    <div class="section-label">Меню</div>
+    <div class="menu-list">
+      <div class="menu-item">
+        <span class="menu-icon">💳</span>
+        <span class="menu-text">Бонусная карта · 450 бонусов</span>
+        <span class="menu-arrow">›</span>
+      </div>
+      <div class="menu-item">
+        <span class="menu-icon">⭐</span>
+        <span class="menu-text">Отзывы и оценки</span>
+        <span class="menu-arrow">›</span>
+      </div>
+      <div class="menu-item">
+        <span class="menu-icon">🔔</span>
+        <span class="menu-text">Уведомления</span>
+        <span class="menu-arrow">›</span>
+      </div>
+      <div class="menu-item">
+        <span class="menu-icon">📞</span>
+        <span class="menu-text">Связаться с салоном</span>
+        <span class="menu-arrow">›</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ══════════════════════════════
+       SCREEN 4 — ПОДТВЕРЖДЕНИЕ
+  ══════════════════════════════ -->
+  <div class="screen" id="screen-confirm">
+    <div class="confirm-wrapper">
+      <div class="confirm-emoji">🎉</div>
+      <div class="confirm-title">Запись подтверждена!</div>
+      <div class="confirm-sub">Ждём вас! За час до визита придёт напоминание в Telegram.</div>
+
+      <div class="confirm-card">
+        <div class="confirm-row">
+          <span class="confirm-key">Услуга</span>
+          <span class="confirm-val" id="c-service">—</span>
+        </div>
+        <div class="confirm-row">
+          <span class="confirm-key">Мастер</span>
+          <span class="confirm-val" id="c-master">—</span>
+        </div>
+        <div class="confirm-row">
+          <span class="confirm-key">Дата</span>
+          <span class="confirm-val" id="c-date">—</span>
+        </div>
+        <div class="confirm-row">
+          <span class="confirm-key">Время</span>
+          <span class="confirm-val" id="c-time">—</span>
+        </div>
+        <div class="confirm-row">
+          <span class="confirm-key">Стоимость</span>
+          <span class="confirm-val accent" id="c-price">—</span>
+        </div>
+      </div>
+
+      <button class="btn-home" onclick="goHome()">На главную</button>
+    </div>
+  </div>
+
+  <!-- STICKY BOOK BUTTON -->
+  <div class="bottom-area" id="bottomArea">
+    <button class="btn-primary" onclick="bookNow()">Записаться →</button>
+  </div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
